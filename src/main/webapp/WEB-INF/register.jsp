@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/include/header.jsp" %>
 
 <c:url value="/register" var="registerURL"/>
-
+<c:url value="/login" var="loginURL"/>
 <div class="container">
     <div class="card card-container">
         <h4> Create new account</h4>
@@ -16,7 +16,7 @@
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Create</button>
         </form>
         <div class="margin-bottom-10">
-            <a href="" class="forgot-password">Back to login</a>
+            <a href="${loginURL}" class="forgot-password">Back to login</a>
         </div>
     </div>
 </div>

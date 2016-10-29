@@ -4,6 +4,12 @@
 
 <c:url value="/book/edit" var="editBookUrl"/>
 <c:url value="/book/delete" var="deleteBookUrl"/>
+<c:url value="/rent/book" var="rentUrl"/>
+<c:if test="${cantRent}">
+<div class="alert alert-danger">
+Tej ksiązki nie można wypożyczyć
+</div>
+</c:if>
 
 <div class="container">
 
@@ -20,6 +26,7 @@
                     <th class="text-center col-md-1">Available</th>
                     <th class="text-center col-md-1">Edit</th>
                     <th class="text-center col-md-1">Delete</th>
+                    <th class="text-center col-md-1">Rent</th>
 
                 </tr>
                 </thead>
@@ -38,6 +45,21 @@
                             <%--</form>--%>
                             <a href="${deleteBookUrl}/${book.id}" class="btn btn-sm btn-danger delete-button">Delete</a>
                         </td>
+
+                        <td class="text-center">
+                        <c:choose>
+                            <c:when test="${book.available > 0}">
+                                <a href="${rentUrl}/${book.id}" class="btn btn-info btn-sm">Rent</a>
+
+                            </c:when>
+                            <c:otherwise>
+                                brak
+                            </c:otherwise>
+
+                        </c:choose>
+
+                        </td>
+
                     </tr>
                 </c:forEach>
                 </tbody>

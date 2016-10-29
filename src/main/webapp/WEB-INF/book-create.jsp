@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/include/header.jsp" %>
 <%@ include file="/WEB-INF/include/navbar.jsp" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
 <c:url var="createBookUrl" value="/book/save"/>
 
@@ -9,24 +11,27 @@
     <h1>Create book</h1>
 
     <div class="row">
-        <form action="${createBookUrl}" method="post" role="form" class="form-horizontal">
-            <input type="hidden" name="id" value="${book.id}"/>
+        <form:form commandName="book" action="${createBookUrl}" method="post" role="form" class="form-horizontal">
+            <form:hidden path="id" value="${book.id}"/>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="author">Author:</label>
                 <div class="col-sm-6">
-                    <input value="${book.author}" name="author" type="text" id="author" class="form-control" placeholder="Enter author" autofocus>
-                </div>
+                    <form:input path="author" type="text" id="author" class="form-control" placeholder="Enter author" autofocus="autofocus"/>
+                    <form:errors path="author" cssStyle="color: red" />
+                    </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="title">Title:</label>
                 <div class="col-sm-6">
-                    <input value="${book.title}" name="title" type="text" id="title" class="form-control" placeholder="Enter title">
+                    <form:input path="title" type="text" id="title" class="form-control" placeholder="Enter title" />
+                    <form:errors path="title" cssStyle="color: red" />
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="available">Availabilty:</label>
                 <div class="col-sm-6">
-                    <input value="${book.available}" name="available" type="number" id="available" class="form-control" placeholder="Enter available">
+                    <form:input path="available" type="number" id="available" class="form-control" placeholder="Enter available" />
+                    <form:errors path="available" cssStyle="color: red" />
                 </div>
             </div>
             <div class="form-group">
@@ -35,7 +40,7 @@
                     <a href="${booksUrl}" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
-        </form>
+        </form:form>
     </div>
 
 </div>

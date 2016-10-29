@@ -13,19 +13,22 @@
                 <tr>
                     <th class="text-center col-md-1">Id</th>
                     <th class="text-center">Date rent</th>
-                    <th class="text-center">Date return</th>
+                    <th class="text-center">Status</th>
                     <th class="text-center">User</th>
                     <th class="text-center">Book</th>
                 </tr>
                 </thead>
                 <tbody>
+
+                <c:forEach items="${rentsList}" var="rent">
                     <tr>
-                        <td>1</td>
-                        <td>2016-10-30</td>
-                        <td>2016-10-30</td>
-                        <td>Wojciech Musial</td>
-                        <td>jaka ksiazka</td>
+                        <td>${rent.id}</td>
+                        <td>${rent.createdDate}</td>
+                        <td>${rent.status}</td>
+                        <td>${rent.user.firstName} ${rent.user.lastName}</td>
+                        <td>${rent.book.author} - ${rent.book.title}</td>
                     </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
